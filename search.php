@@ -16,17 +16,25 @@
                     <small>Secondary Text</small>
                 </h1>
 
-                <!-- First Blog Post -->
+                <!-- Blog Area -->
                 <?php
-                    $query = "SELECT * FROM posts";
-                    $select_post_query = mysqli_query($connection, $query);
+                    if($_POST['submit']) {
+                        $search = $_POST['search'];
+                        $query = "SELECT * FROM posts WHERE tag LIKE '%$search%'";
+                        $search_query = mysqli_query($connection, $query);
+                        if (!$search_query) {
+                            die("Query Failed " . mysqli_error($connection));
+                        }
 
-                    while($row = mysqli_fetch_assoc($select_post_query)) {
-                        $post_title = $row['title'];
-                        $post_author = $row['author'];
-                        $post_date = $row['date'];
-                        $post_image = $row['image'];
-                        $post_content = $row['content'];
+                        $count = mysqli_num_rows($search_query);
+                        if ($count === 0) {
+                            echo "<h1>No Result</h1>";
+                        } else {
+                            while($row = mysqli_fetch_assoc($search_query)) {
+                                $post_title = $row['title'];
+                                $post_author = $row['author'];
+                                $post_date = $row['date'];
+                                $post_image = $row['image'];
                 ?>
                 <!-- post title -->
                 <h2><a href="#"><?php echo $post_title ?></a></h2>
@@ -42,7 +50,11 @@
                 <hr>
 
                 <!-- end of php while loop -->
-                <?php } ?>
+                <?php
+                        }
+                    }
+                }
+                ?>
 
 
                 <!-- Pager -->
