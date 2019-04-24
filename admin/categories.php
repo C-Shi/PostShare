@@ -37,6 +37,7 @@
                             }
                         ?>
                         <div class="col-sm-6">
+                            <!-- form for adding category -->
                             <form method="POST" action="">
                                 <div class="form-group">
                                     <label>Category Title</label>
@@ -45,6 +46,23 @@
                                 <div class="form-group">
                                     <input type="submit" name="submit" class="btn btn-primary" value="Add Category">
                                 </div>
+                            </form>
+
+                            <!-- form for edit category -->
+                            <form>
+
+                                <?php
+                                    if(isset($_GET['edit'])) {
+                                        $edit_id = $_GET['edit'];
+                                        $query = "SELECT * FROM categories WHERE id = {$edit_id};";
+                                        $query_get_categories = mysqli_query($connection, $query);
+                                        $category = mysqli_fetch_assoc($query_get_categories);
+                                        echo "<div class='form-group'>";
+                                        echo "<input type='text' class='form-control' name='title' value={$category['title']}>";
+                                        echo "</div>";
+                                        echo "<input type='submit' name='update' class='btn btn-primary'>";
+                                    }
+                                ?>
                             </form>
                         </div>
 
@@ -82,6 +100,7 @@
                                             <td><?php echo $id ?></td>
                                             <td><?php echo $title ?></td>
                                             <td><a href="categories.php?delete=<?php echo $id ?>">Delete</a></td>
+                                            <td><a href="categories.php?edit=<?php echo $id ?>">Edit</a></td>
                                         </tr>
                                     <?php } ?>
                                 </tbody>
