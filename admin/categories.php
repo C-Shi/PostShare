@@ -49,8 +49,21 @@
                             </form>
 
                             <!-- form for edit category -->
-                            <form>
-
+                            <!-- update query for category title -->
+                            <?php
+                                if(isset($_POST['update'])) {
+                                    $title = $_POST['title'];
+                                    $id = $_POST['cat_id'];
+                                    $query = "UPDATE categories SET title = '{$title}' WHERE id = {$id};";
+                                    $update_cat_query = mysqli_query($connection, $query);
+                                    if (!$update_cat_query) {
+                                        die('Query Failed ' . mysqli_error($connection));
+                                    } else {
+                                        unset($_GET);
+                                    }
+                                }
+                            ?>
+                            <form action="" method="POST">
                                 <?php
                                     if(isset($_GET['edit'])) {
                                         $edit_id = $_GET['edit'];
@@ -59,8 +72,9 @@
                                         $category = mysqli_fetch_assoc($query_get_categories);
                                         echo "<div class='form-group'>";
                                         echo "<input type='text' class='form-control' name='title' value={$category['title']}>";
+                                        echo "<input type='hidden' name='cat_id' value={$edit_id}>";
                                         echo "</div>";
-                                        echo "<input type='submit' name='update' class='btn btn-primary'>";
+                                        echo "<input type='submit' name='update' class='btn btn-primary' value='Update Category'>";
                                     }
                                 ?>
                             </form>
