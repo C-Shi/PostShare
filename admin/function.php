@@ -1,5 +1,16 @@
 <?php
 
+function get_all_categories() {
+  global $connection;
+  $query = "SELECT * FROM categories;";
+  $query_get_categories = mysqli_query($connection, $query);
+  $result = [];
+  while($row = mysqli_fetch_assoc($query_get_categories)) {
+    array_push($result, $row);
+  }
+  return $result;
+}
+
 function add_category() {
     global $connection;
     if(isset($_POST['submit'])) {
