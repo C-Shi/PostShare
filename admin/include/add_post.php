@@ -5,21 +5,24 @@
     $author = $_POST['author'];
     $tag = $_POST['tag'];
     $content = $_POST['content'];
-    $date = date('d-m-y');
+    $date = date('y-m-d');
     $image = $_FILES['image']['name'];
     $image_temp = $_FILES['image']['tmp_name'];
     $comment_count = 4;
 
     move_uploaded_file($image_temp, "../images/" . $image);
+
+    $query = "INSERT INTO posts(title, author, tag, content, date, image) ";
+    $query .= "VALUES('{$title}', '{$author}', '{$tag}', '{$content}', '${date}', '{$image}')";
+    $create_post_query = mysqli_query($connection, $query);
+
+    if(!$create_post_query) {
+      die('Query Failed '. mysqli_error($connection));
+    }
   }
  ?>
 
 <form action="" method="POST" enctype="multipart/form-data">
-  <div class="form-group">
-    <label>Post Title: </label>
-    <input type="text" name="title" class="form-control">
-  </div>
-
   <div class="form-group">
     <label>Title</label>
     <input type="text" name="title" class="form-control">
