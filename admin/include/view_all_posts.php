@@ -1,3 +1,16 @@
+  <!-- delete query -->
+  <?php
+    if(isset($_GET['delete'])) {
+      $id = $_GET['delete'];
+      $query = "DELETE FROM posts WHERE id = {$id};";
+      $query_delete_post = mysqli_query($connection, $query);
+      if (!$query_delete_post) {
+        die("Query Failed ". mysqli_error($connection));
+      }
+      unset($_GET['delete']);
+    }
+  ?>
+
   <!-- table for showing all posts -->
   <table class="table table-hover">
     <thead>
@@ -11,6 +24,7 @@
         <th>Tags</th>
         <th>Comments</th>
         <th>Date</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -38,6 +52,10 @@
           <td><?php echo $tag ?></td>
           <td><?php echo $comment_count ?></td>
           <td><?php echo $date ?></td>
+          <td>
+            <!-- this should submit to post.php not view_all_post.php because we do not want to go to different page -->
+            <a href="post.php?delete=<?php echo $id ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+          </td>
         </tr>
         <?php } ?>
 

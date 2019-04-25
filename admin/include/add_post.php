@@ -8,12 +8,13 @@
     $date = date('y-m-d');
     $image = $_FILES['image']['name'];
     $image_temp = $_FILES['image']['tmp_name'];
+    $status = $_POST['status'];
     $comment_count = 4;
 
     move_uploaded_file($image_temp, "../images/" . $image);
 
-    $query = "INSERT INTO posts(title, author, tag, content, date, image) ";
-    $query .= "VALUES('{$title}', '{$author}', '{$tag}', '{$content}', '${date}', '{$image}')";
+    $query = "INSERT INTO posts(title, author, tag, content, date, image, status) ";
+    $query .= "VALUES('{$title}', '{$author}', '{$tag}', '{$content}', '${date}', '{$image}', '{$status}')";
     $create_post_query = mysqli_query($connection, $query);
 
     if(!$create_post_query) {
@@ -41,6 +42,15 @@
   <div class="form-group">
     <label>Content</label>
     <textarea class="form-control" name="content"></textarea>
+  </div>
+
+  <div class="form-group">
+      <label>Status</label>
+      <select class="form-control">
+        <option>PUBLISHED</option>
+        <option>DRAFT</option>
+        <option>REJECTED</option>
+      </select>
   </div>
 
   <div class="form-group">
