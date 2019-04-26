@@ -3,6 +3,7 @@
   if (isset($_POST['create_post'])) {
     $title = $_POST['title'];
     $author = $_POST['author'];
+    $category_id = $_POST['category_id'];
     $tag = $_POST['tag'];
     $content = $_POST['content'];
     $date = date('y-m-d');
@@ -13,8 +14,8 @@
 
     move_uploaded_file($image_temp, "../images/" . $image);
 
-    $query = "INSERT INTO posts(title, author, tag, content, date, image, status) ";
-    $query .= "VALUES('{$title}', '{$author}', '{$tag}', '{$content}', '${date}', '{$image}', '{$status}')";
+    $query = "INSERT INTO posts(title, category_id, author, tag, content, date, image, status) ";
+    $query .= "VALUES('{$title}',{$category_id} ,'{$author}', '{$tag}', '{$content}', '${date}', '{$image}', '{$status}')";
     $create_post_query = mysqli_query($connection, $query);
 
     if(!$create_post_query) {
@@ -27,6 +28,18 @@
   <div class="form-group">
     <label>Title</label>
     <input type="text" name="title" class="form-control">
+  </div>
+
+  <div class="form-group">
+    <label>Category</label>
+    <select name="category_id" class="form-control">
+      <?php
+        $categories = get_all_categories();
+        foreach($categories as $category) {
+          echo "<option value='${category['id']}'>{$category['title']}</option>";
+        }
+      ?>
+    </select>
   </div>
 
   <div class="form-group">
