@@ -22,6 +22,7 @@
                     $select_post_query = mysqli_query($connection, $query);
 
                     while($row = mysqli_fetch_assoc($select_post_query)) {
+                        $post_id = $row['id'];
                         $post_title = $row['title'];
                         $post_author = $row['author'];
                         $post_date = $row['date'];
@@ -29,7 +30,7 @@
                         $post_content = $row['content'];
                 ?>
                 <!-- post title -->
-                <h2><a href="#"><?php echo $post_title ?></a></h2>
+                <h2><a href="post.php?post_id=<?php echo $post_id ?>"><?php echo $post_title ?></a></h2>
                 <p class="lead">by <a href="index.php"><?php echo $post_author ?></a>
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_date; ?></p>
