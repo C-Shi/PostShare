@@ -37,7 +37,15 @@
                 <hr>
                 <img class="img-responsive" src="images/<?php echo $post_image ?>" alt="">
                 <hr>
-                <p><?php echo $post_content ?></p>
+                <p>
+                  <?php
+                    if (substr($post_content, 0, 250) == $post_content) {
+                      echo $post_content;
+                    } else {
+                      echo substr($post_content, 0, 250) . ' ...';
+                    }
+                  ?>
+                </p>
                 <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>

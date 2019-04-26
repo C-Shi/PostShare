@@ -24,7 +24,15 @@
             <hr>
             <img class="img-responsive" src="images/<?php echo $post['image'] ?>" alt="">
             <hr>
-            <p><?php echo $post['content'] ?></p>
+            <p>
+              <?php
+                if (substr($post['content'], 0, 250) == $post['content']) {
+                  echo $post['content'];
+                } else {
+                  echo substr($post['content'], 0, 250) . ' ...';
+                }
+              ?>
+              </p>
             <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
             <hr>
