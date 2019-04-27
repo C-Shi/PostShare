@@ -61,13 +61,33 @@
                 <!-- Blog Comments -->
 
                 <!-- Comments Form -->
+                <?php
+
+                    if (isset($_POST['create_comment'])) {
+                        // will always have post_id in reqeust params
+                        $post_id = $_GET['post_id'];
+                        $author = $_POST['author'];
+                        $comment = $_POST['comment'];
+
+                        $query = "INSERT INTO comments(post_id, author, content) VALUES($post_id, '$author', '$comment');";
+                        $query_insert_comment = mysqli_query($connection, $query);
+                        if (!$query_insert_comment) {
+                            die('Query Failed ' . mysqli_error($connection));
+                        }
+
+                    }
+
+                 ?>
                 <div class="well">
                     <h4>Leave a Comment:</h4>
-                    <form role="form">
+                    <form role="form" action="" method="POST">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <input class="form-control" type="text" name="author" placeholder="Let us know who you are: ">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3" name="comment" placeholder="What do you think about ..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-success" name="create_comment">Comment</button>
                     </form>
                 </div>
 

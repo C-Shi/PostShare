@@ -51,7 +51,7 @@
                         <a href="categories.php">Categories</a>
                     </li>
                     <li>
-                        <a href="#">Comments</a>
+                        <a href="comment.php">Comments</a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-user"></i> Users</a>
