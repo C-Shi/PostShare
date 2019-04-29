@@ -58,10 +58,10 @@
 
   <div class="form-group">
       <label>Status</label>
-      <select class="form-control">
-        <option>PUBLISHED</option>
-        <option>DRAFT</option>
-        <option>REJECTED</option>
+      <select class="form-control" name="status">
+        <option value="PUBLISHED">PUBLISHED</option>
+        <option value="DRAFT">DRAFT</option>
+        <option value="REJECTED">REJECTED</option>
       </select>
   </div>
 

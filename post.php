@@ -15,7 +15,7 @@
                 <?php
                     if(isset($_GET['post_id'])) {
                         $post_id = $_GET['post_id'];
-                        $query = "SELECT * FROM posts WHERE id = {$post_id}";
+                        $query = "SELECT * FROM posts WHERE id = {$post_id} AND status = 'PUBLISHED'";
                         $query_get_post = mysqli_query($connection, $query);
                         if (!$query_get_post) {
                             die('Query Failed ' . mysqli_error($connection));

@@ -27,7 +27,6 @@
     $image = $_FILES['image']['name'];
     $image_temp = $_FILES['image']['tmp_name'];
     $status = $_POST['status'];
-    $comment_count = 4;
 
     move_uploaded_file($image_temp, "../images/" . $image);
     // check if image is re-upload
@@ -98,9 +97,9 @@
           $status = ['PUBLISHED', 'DRAFT', 'REJECTED'];
           foreach($status as $stat) {
             if ($stat === $post_status) {
-              echo "<option selected='selected'>{$stat}</option>";
+              echo "<option selected='selected' value='{$stat}'>{$stat}</option>";
             } else {
-              echo "<option>{$stat}</option>";
+              echo "<option value='{$stat}'>{$stat}</option>";
             }
           }
          ?>

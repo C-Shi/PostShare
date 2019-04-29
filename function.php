@@ -2,9 +2,9 @@
 
   function find_posts_by_category_id($cat_id) {
     global $connection;
-    $query = "SELECT * FROM posts WHERE category_id = $cat_id";
+    $query = "SELECT * FROM posts WHERE category_id = $cat_id AND status = 'PUBLISHED'";
     $query_find_posts = mysqli_query($connection, $query);
-    if (!$query_find_comments) {
+    if (!$query_find_posts) {
       die('Query Failed ' . mysqli_error($connection));
     }
     $results = array();
