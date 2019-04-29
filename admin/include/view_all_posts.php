@@ -1,13 +1,13 @@
   <!-- delete query -->
   <?php
-    if(isset($_GET['delete'])) {
-      $id = $_GET['delete'];
+    if(isset($_GET['delete_post'])) {
+      $id = $_GET['delete_post'];
       $query = "DELETE FROM posts WHERE id = {$id};";
       $query_delete_post = mysqli_query($connection, $query);
       if (!$query_delete_post) {
         die("Query Failed ". mysqli_error($connection));
       }
-      unset($_GET['delete']);
+      unset($_GET['delete_post']);
     }
   ?>
 
@@ -55,7 +55,7 @@
           <td>
             <!-- this should submit to post.php not view_all_post.php because we do not want to go to different page -->
             <a href="post.php?source=edit_post&&p_id=<?php echo $id ?>" class="btn btn-sm btn-success">Edit</a>
-            <a href="post.php?delete=<?php echo $id ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+            <a href="post.php?delete_post=<?php echo $id ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
           </td>
         </tr>
         <?php } ?>

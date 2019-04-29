@@ -76,5 +76,16 @@ function show_edit() {
   }
 }
 
+function delete_comment($comment_id) {
+  global $connection;
+  $query = "DELETE FROM comments WHERE id = {$comment_id};";
+  $query_delete_comment = mysqli_query($connection, $query);
+  if(!$query_delete_comment) {
+    die('Query Failed ' . mysqli_error($connection));
+  } else {
+    header('Location: comment.php');
+  }
+}
+
 
 ?>

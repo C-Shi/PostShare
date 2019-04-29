@@ -1,4 +1,12 @@
-
+<!-- php for delete comment -->
+<?php 
+  if(isset($_GET['delete_comment'])) {
+    $comment_id = $_GET['delete_comment'];
+    delete_comment($comment_id);
+  }
+?>
+  
+  
   <!-- table for showing all comments -->
   <table class="table table-hover">
     <thead>
@@ -33,8 +41,7 @@
           <td><?php echo $time ?></td>
           <td>
             <!-- this should submit to post.php not view_all_post.php because we do not want to go to different page -->
-            <a href="post.php?source=edit_post&&p_id=<?php echo $id ?>" class="btn btn-sm btn-success">Edit</a>
-            <a href="post.php?delete=<?php echo $id ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+            <a href="comment.php?delete_comment=<?php echo $comment_id ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
           </td>
         </tr>
         <?php } ?>
