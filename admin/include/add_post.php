@@ -10,7 +10,6 @@
     $image = $_FILES['image']['name'];
     $image_temp = $_FILES['image']['tmp_name'];
     $status = $_POST['status'];
-    $comment_count = 4;
 
     move_uploaded_file($image_temp, "../images/" . $image);
 

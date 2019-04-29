@@ -29,8 +29,11 @@
     </thead>
     <tbody>
       <?php
-        $query = "SELECT posts.*, categories.title AS 'cat_title' FROM posts LEFT JOIN categories ON posts.category_id = categories.id";
+        $query = "SELECT posts.*, categories.title AS 'cat_title', COUNT(comments.id) AS 'comment_count' FROM posts LEFT JOIN categories ON posts.category_id = categories.id LEFT JOIN comments ON posts.id = comments.post_id GROUP BY posts.id";
         $query_get_all_post = mysqli_query($connection, $query);
+        if(!$query_get_all_post) {
+          die('Query Failed ' . mysqli_error($connection));
+        }
         while($row = mysqli_fetch_assoc($query_get_all_post)) {
           $id = $row['id'];
           $title = $row['title'];
