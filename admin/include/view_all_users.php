@@ -26,7 +26,7 @@
         <td><?php echo $user['name']; ?></td>
         <td><?php echo $user['role']; ?></td>
         <td>
-          <a class="btn btn-sm btn-success">Edit</a>
+          <a class="btn btn-sm btn-success" href="users.php?source=edit_user&user_id=<?php echo $user['id']?>">Edit</a>
           <form style="display: inline" action="" method="POST">
             <button class="btn btn-sm btn-danger" type="submit" name="delete_user" value="<?php echo $user['id'] ?>">Delete</button>
           </form>

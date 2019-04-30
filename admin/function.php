@@ -112,5 +112,16 @@ function get_all_users() {
   return $results;
 }
 
+function get_user_by_id($user_id) {
+  global $connection;
+  $query = "SELECT * FROM users WHERE id = $user_id;";
+  $query_get_user = mysqli_query($connection, $query);
+  if (!$query_get_user) {
+    die('Query Failed' . mysqli_error($connection));
+  } else {
+    return mysqli_fetch_assoc($query_get_user);
+  }
+}
+
 
 ?>
