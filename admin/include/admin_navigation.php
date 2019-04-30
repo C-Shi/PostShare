@@ -48,24 +48,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="categories.php">Categories</a>
+                        <a href="categories.php"><i class="fa fa-folder-open"></i> Categories</a>
                     </li>
                     <li>
-                        <a href="comment.php">Comments</a>
+                        <a href="comment.php"><i class="fa fa-comments-o"></i> Comments</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#user"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="user" class="collapse">
-                            <li>
-                                <a href="./users.php">View All Users</a>
-                            </li>
-                            <li>
-                                <a href="./users.php?source=add_user">Add User</a>
-                            </li>
-                            <li>
-                                <a href="./users.php?source=edit_user">Edit User</a>
-                            </li>
-                        </ul>
+                        <a href="users.php"><i class="fa fa-users"></i> Users</a>
                     </li>
                 </ul>
             </div>
