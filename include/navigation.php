@@ -1,3 +1,12 @@
+<!-- logout logic -->
+<?php 
+    if(isset($_GET['logout'])) {
+        session_destroy();
+        unset($_GET['logout']);
+        header("Location: index.php");
+    }
+?>
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -25,6 +34,11 @@
 
                 <li><a href="admin/index.php">Admin</a></li>
             </ul>
+            <?php if(isset($_SESSION['current_user_email'])): ?>
+            <p class="navbar-text navbar-right">
+                Welcome! <?php echo $_SESSION['current_user_email']; ?> <a href="index.php?logout" class="navbar-link">Sign Out</a>
+            </p>
+            <?php endif; ?>
         </div>
         <!-- /.navbar-collapse -->
     </div>

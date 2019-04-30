@@ -2,7 +2,7 @@
 <?php session_start() ?>
 <?php include "../include/db.php" ?>
 <?php 
-    if($_SESSION['current_user_role'] !== 'Admin') {
+    if(!$_SESSION['current_user_role'] || $_SESSION['current_user_role'] !== 'Admin') {
         header("Location: ../index.php");
     }
 ?>
