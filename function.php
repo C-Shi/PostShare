@@ -29,4 +29,27 @@
     return $results;
   }
 
+  function login_processor($email, $password) {
+    global $connection;
+    // sanitize login credential
+    $email = mysqli_real_escape_string($connection, $email);
+    $password = mysqli_real_escape_string($connection, $password);
+
+    $query = "SELECT * FROM users WHERE email = '$email'";
+    $query_find_user = mysqli_query($connection, $query);
+    if(!$query_find_user) {
+        die('Query Failed ' . mysqli_error($connection));
+    }
+    if(mysqli_num_rows($query_find_user) === '0') {
+        echo "<div class=\"alert alert-danger\" role=\"alert\">Account Does Not Exist</div>"; 
+    } else {
+        $user = mysqli_fetch_assoc($query_find_user);
+        if($password === $user['password']) {
+            header("Location: admin/index.php");
+        } else {
+            echo "<div class=\"alert alert-danger\" role=\"alert\">Incorrect Password</div>";
+        }
+    }
+  }
+
  ?>
