@@ -1,14 +1,13 @@
 <?php 
-  $query = "SELECT * FROM users";
-  $query_get_users = mysqli_query($connection, $query);
-  $results = array();
-  if(!$query_get_users) {
-    die('Query Failed ' . mysqli_error($connection));
-  }
-  while($row = mysqli_fetch_assoc($query_get_users)) {
-    array_push($results, $row);
+// code for show all users 
+  $users = get_all_users();
+// code for delete user
+  if(isset($_POST['delete_user'])) {
+    $user_id = $_POST['delete_user'];
+    delete_user($user_id);
   }
 ?>
+
 <table class="table table-hover">
   <thead>
     <tr>
@@ -20,7 +19,7 @@
     </tr>
   </thead>
   <tbody>
-    <?php foreach($results as $user): ?>
+    <?php foreach($users as $user): ?>
       <tr>
         <td><?php echo $user['id']; ?></td>
         <td><?php echo $user['email']; ?></td>
@@ -28,7 +27,9 @@
         <td><?php echo $user['role']; ?></td>
         <td>
           <a class="btn btn-sm btn-success">Edit</a>
-          <a class="btn btn-sm btn-danger">Delete</a>
+          <form style="display: inline" action="" method="POST">
+            <button class="btn btn-sm btn-danger" type="submit" name="delete_user" value="<?php echo $user['id'] ?>">Delete</button>
+          </form>
         </td>
       </tr>
     <?php endforeach ; ?>

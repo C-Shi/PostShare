@@ -87,5 +87,30 @@ function delete_comment($comment_id) {
   }
 }
 
+function delete_user($user_id) {
+  global $connection;
+  $query = "DELETE FROM users WHERE id = $user_id; ";
+  $query_delete_user = mysqli_query($connection, $query);
+  if(!$query_delete_user) {
+    die('Query Failed ' . mysqli_error($connection));
+  } else {
+    header('Location: users.php');
+  }
+}
+
+function get_all_users() {
+  global $connection;
+  $query = "SELECT * FROM users";
+  $query_get_users = mysqli_query($connection, $query);
+  $results = array();
+  if(!$query_get_users) {
+    die('Query Failed ' . mysqli_error($connection));
+  }
+  while($row = mysqli_fetch_assoc($query_get_users)) {
+    array_push($results, $row);
+  }
+  return $results;
+}
+
 
 ?>
