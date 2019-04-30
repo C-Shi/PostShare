@@ -54,7 +54,18 @@
                         <a href="comment.php">Comments</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-user"></i> Users</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#user"><i class="fa fa-fw fa-arrows-v"></i> Users <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="user" class="collapse">
+                            <li>
+                                <a href="./users.php">View All Users</a>
+                            </li>
+                            <li>
+                                <a href="./users.php?source=add_user">Add User</a>
+                            </li>
+                            <li>
+                                <a href="./users.php?source=edit_user">Edit User</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
