@@ -45,6 +45,11 @@
     } else {
         $user = mysqli_fetch_assoc($query_find_user);
         if($password === $user['password']) {
+          // set session about user
+            $_SESSION['current_user_email'] = $user['email'];
+            $_SESSION['current_user_name'] = $user['name'];
+            $_SESSION['current_user_role'] = $user['role'];
+            $_SESSION['current_user_id'] = $user['id'];
             header("Location: admin/index.php");
         } else {
             echo "<div class=\"alert alert-danger\" role=\"alert\">Incorrect Password</div>";

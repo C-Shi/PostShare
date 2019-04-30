@@ -19,7 +19,6 @@
                 if(isset($_POST['login'])) {
                     $email = $_POST['email'];
                     $password = $_POST['password'];
-
                     login_processor($email, $password);
                     unset($_POST['login']);
                 }
