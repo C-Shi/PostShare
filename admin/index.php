@@ -13,13 +13,15 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Blank Page
-                            <small>Subheading</small>
+                            Dashboard
+                            <small>Summary And Status</small>
                         </h1>
 
                     </div>
                 </div>
                 <!-- /.row -->
+
+                <?php include "include/admin_dashboard.php"?>
 
             </div>
             <!-- /.container-fluid -->
