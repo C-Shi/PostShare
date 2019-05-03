@@ -53,7 +53,7 @@
 
   <div class="form-group">
     <label>Content</label>
-    <textarea class="form-control" name="content"></textarea>
+    <textarea class="form-control" name="content" id="editor"></textarea>
   </div>
 
   <div class="form-group">
