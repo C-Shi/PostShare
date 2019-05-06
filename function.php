@@ -83,4 +83,12 @@
     return $message;
   }
 
+  function get_user_by_id($user_id) {
+    global $connection;
+    $query = "SELECT * FROM users WHERE id = $user_id;";
+    $query_get_user = mysqli_query($connection, $query);
+    $user = mysqli_fetch_assoc($query_get_user);
+    return $user;
+  }
+
  ?>

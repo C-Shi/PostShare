@@ -31,8 +31,15 @@
                         echo "<li><a>{$title}</a></li>";
                     }
                 ?>
+                <?php 
+                    if($_SESSION['current_user_id']) {
+                        echo "<li><a href=\"profile.php\">Profile</a></li>";
+                    }
 
-                <li><a href="admin/index.php">Admin</a></li>
+                    if($_SESSION['current_user_id'] && $_SESSION['current_user_role'] === 'Admin') {
+                        echo "<li><a href=\"admin/index.php\">Admin</a></li>";
+                    }
+                ?>
             </ul>
             <?php if(isset($_SESSION['current_user_email'])): ?>
             <p class="navbar-text navbar-right">
