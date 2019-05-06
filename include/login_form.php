@@ -11,6 +11,7 @@
                     <button class="btn btn-primary" type="submit" name="login">Login</button>
                 </span>
             </div>
+            <small>Not Yet With Us? <a href="register.php">Register Now</a></small>
             <br>
             <!-- login processer -->
             <?php 

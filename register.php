@@ -40,7 +40,7 @@
               $name = $_POST['name'];
               $message = register_user($email, $password, $confirm_password, $name);
               if ($message === 'Registeration Completed!') {
-                // login_process($email, $password);
+                login_processor($email, $password);
                 echo "<div class='alert alert-success' role='alert' id='message'>$message</div>";
               } else {
                 echo "<div class='alert alert-danger' role='alert' id='message'>$message</div>";
