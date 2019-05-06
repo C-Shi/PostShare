@@ -57,4 +57,30 @@
     }
   }
 
+  function register_user($email, $password, $confirm_password, $name) {
+    global $connection;
+    $message = "";
+    // verify posted data
+    if(!$email || !$password || !$confirm_password || !$name) {
+      $message = "Empty Field Detected";
+    } elseif ($password !== $confirm_password) {
+      $message .= " Password Does Not Match";
+    } else {
+      $email = mysqli_real_escape_string($connection, $email);
+      $password = mysqli_real_escape_string($connection, $password);
+      $name = mysqli_real_escape_string($connection, $name);
+      $hash = password_hash($password, PASSWORD_DEFAULT);
+      $query = "INSERT INTO users(email, password, name, role) VALUES('$email', '$hash', '$name', 'Subscriber');";
+      $query_register_user = mysqli_query($connection, $query);
+      if(!$query_register_user) {
+        $message .= " " . mysqli_error($connection);
+      } elseif (mysqli_affected_rows($connection) === '0') {
+        $message .= " Cannot Insert!";
+      } else {
+        $message = "Registeration Completed!";
+      } 
+    }
+    return $message;
+  }
+
  ?>
