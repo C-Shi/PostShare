@@ -57,8 +57,8 @@
           <td><?php echo $date ?></td>
           <td>
             <!-- this should submit to post.php not view_all_post.php because we do not want to go to different page -->
-            <a href="post.php?source=edit_post&&p_id=<?php echo $id ?>" class="btn btn-sm btn-success">Edit</a>
-            <a href="post.php?delete_post=<?php echo $id ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
+            <a href="posts.php?source=edit_post&&p_id=<?php echo $id ?>" class="btn btn-sm btn-success">Edit</a>
+            <a href="posts.php?delete_post=<?php echo $id ?>" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i> Delete</a>
           </td>
         </tr>
         <?php } ?>

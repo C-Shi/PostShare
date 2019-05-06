@@ -46,7 +46,7 @@
     if (!$update_query) {
       die('Query Failed '. mysqli_error($connection));
     } else {
-      header('Location: post.php');
+      header('Location: posts.php');
     }
   }
 
