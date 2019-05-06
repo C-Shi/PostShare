@@ -44,7 +44,7 @@
         echo "<div class=\"alert alert-danger\" role=\"alert\">Account Does Not Exist</div>"; 
     } else {
         $user = mysqli_fetch_assoc($query_find_user);
-        if($password === $user['password']) {
+        if(password_verify($password, $user['password'])){
           // set session about user
             $_SESSION['current_user_email'] = $user['email'];
             $_SESSION['current_user_name'] = $user['name'];
