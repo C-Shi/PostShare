@@ -2,16 +2,16 @@
 PostShare is a PHP Content Management System for Developer to share latest technologies. This App use PHP MySQL combination to achieve CRUD for Posts and User management.
 
 ## Features and Live Demo
-* Admin user can login to the admin panel to view the statistics and break down of Posts, Comments can users info. Authentication is done by PHP Built in hashing algorithm. 
+* Admin user can login to the admin panel to view the statistics and break down of Posts, Comments can users info. Authentication is done by PHP Built in hashing algorithm. <br/>
 ![1](./doc/user.gif)
 
-* Admin user can Add, Edit, Update and Delete Posts, Change users role and delete comments. Only Admin users have access to the admin panel.
+* Admin user can Add, Edit, Update and Delete Posts, Change users role and delete comments. Only Admin users have access to the admin panel. <br/>
 ![2](./doc/user.gif)
 
-* User can view the list of posts, request to view only a certain category of posts, or search for a specific posts.
+* User can view the list of posts, request to view only a certain category of posts, or search for a specific posts. <br/>
 ![3](./doc/post.gif)
 
-* User can comment of a specific post and share something with the community
+* User can comment of a specific post and share something with the community <br/>
 ![4](./doc/comment.gif)
 
 ## Installation and Usage
