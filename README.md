@@ -6,7 +6,7 @@ PostShare is a PHP Content Management System for Developer to share latest techn
 ![1](./doc/user.gif)
 
 * Admin user can Add, Edit, Update and Delete Posts, Change users role and delete comments. Only Admin users have access to the admin panel. <br/>
-![2](./doc/user.gif)
+![2](./doc/admin.gif)
 
 * User can view the list of posts, request to view only a certain category of posts, or search for a specific posts. <br/>
 ![3](./doc/post.gif)
